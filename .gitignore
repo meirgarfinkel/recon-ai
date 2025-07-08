@@ -4,9 +4,16 @@
 /node_modules
 /.pnp
 .pnp.js
+.pnpm-store/
+.pnpm-debug.log
+**/.pnpm-store/**/*
 
 # testing
 /coverage
+
+# logs
+*.log
+logs/
 
 # database
 /prisma/db.sqlite
@@ -17,13 +24,17 @@ db.sqlite
 /.next/
 /out/
 next-env.d.ts
+.next
 
 # production
 /build
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+dist
+.turbo
 
 # debug
 npm-debug.log*
@@ -44,3 +55,5 @@ yarn-error.log*
 
 # idea files
 .idea
+.vscode
+*.code-workspace
