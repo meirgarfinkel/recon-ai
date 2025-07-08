@@ -1,12 +1,13 @@
 {
   "name": "ReconAI",
-  "dockerComposeFile": ["../docker-compose.yml"],
+  "dockerComposeFile": "../docker-compose.yml",
   "service": "web",
   "workspaceFolder": "/app",
   "remoteUser": "node",
-
   "forwardPorts": [3000, 5432],
-
+  
+  "postCreateCommand": "pnpm install --frozen-lockfile",
+  
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,12 +17,18 @@
         "dbaeumer.vscode-eslint"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "npm.packageManager": "pnpm",
+        "typescript.tsdk": "/app/node_modules/typescript/lib",
+        "eslint.workingDirectories": ["/app"],
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
       }
     }
   },
 
   "runArgs": [
+    "--memory=4g",
+    "--cpus=2",
     "-v", "${env:SSH_AUTH_SOCK}:/ssh-agent",
     "-e", "SSH_AUTH_SOCK=/ssh-agent"
   ]

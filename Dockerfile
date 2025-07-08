@@ -1,31 +1,30 @@
 FROM node:20-slim
 
-RUN apt-get update \
-    && apt-get install -y git openssh-client bash sudo \
-    && npm install -g pnpm \
-    && rm -rf /var/lib/apt/lists/*
+# System setup (as root)
+RUN apt-get update && \
+    apt-get install -y git openssh-client sudo && \
+    npm install -g pnpm && \
+    rm -rf /var/lib/apt/lists/* && \
+    # Create directories with correct permissions
+    mkdir -p /app /home/node/.vscode-server/extensions && \
+    chown -R node:node /app /home/node
 
+# Switch to non-root user
+USER node
 WORKDIR /app
 
+# Set PNPM environment variables
+ENV PNPM_HOME=/app/.pnpm-store
+ENV PATH=$PNPM_HOME:$PATH
+
 # Copy dependency files
-COPY package.json pnpm-lock.yaml* ./
+COPY --chown=node:node package.json pnpm-lock.yaml ./
+COPY --chown=node:node prisma ./prisma
 
-# Copy prisma schema before install
-COPY prisma ./prisma
-
-# Ensure /app and /app/prisma are owned by node
-RUN chown -R node:node /app
-
-USER node
+# Install dependencies
 RUN pnpm install --frozen-lockfile
 
-# Copy the rest of the code
+# Copy application code
 COPY --chown=node:node . .
 
-# Optionally add passwordless sudo for node user
-USER root
-RUN echo "node ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/node \
-    && chmod 0440 /etc/sudoers.d/node
-
-USER node
 CMD ["pnpm", "dev"]
