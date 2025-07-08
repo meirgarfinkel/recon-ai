@@ -1,0 +1,28 @@
+{
+  "name": "ReconAI",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "web",
+  "workspaceFolder": "/app",
+  "remoteUser": "node",
+
+  "forwardPorts": [3000, 5432],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "prisma.prisma",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "runArgs": [
+    "-v", "${env:SSH_AUTH_SOCK}:/ssh-agent",
+    "-e", "SSH_AUTH_SOCK=/ssh-agent"
+  ]
+}

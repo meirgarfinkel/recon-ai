@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+.pnpm
+.pnpm-debug.log
+npm-debug.log
+
+# Build output
+dist
+build
+coverage
+
+# Version control
+.git
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# Editor/IDE
+.vscode
+.idea
+*.swp
+
+# Secrets and configs
+.env
+.env.*
+.aws
+.npmrc
+
+# Misc
+README.md
+LICENSE
+*.log
+.editorconfig
