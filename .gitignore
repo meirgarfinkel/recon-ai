@@ -35,6 +35,7 @@ Thumbs.db
 *.pem
 dist
 .turbo
+.gitconfig
 
 # debug
 npm-debug.log*
