@@ -9,6 +9,7 @@ services:
       - .:/app:cached
       - reconai-node_modules:/app/node_modules
       - reconai-pnpm-store:/app/.pnpm-store
+      - ./.gitconfig:/home/node/.gitconfig:ro
       # Only mount extensions directory
       - vscode-extensions:/home/node/.vscode-server/extensions
     environment:
@@ -51,6 +52,7 @@ services:
 
 volumes:
   pgdata:
+  git-config:
   reconai-node_modules:
   reconai-pnpm-store:
   vscode-extensions:

@@ -12,6 +12,7 @@ coverage
 # Version control
 .git
 .gitignore
+.gitconfig
 
 # Docker files
 Dockerfile
