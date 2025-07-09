@@ -6,8 +6,6 @@
   "remoteUser": "node",
   "forwardPorts": [3000, 5432],
   
-  "postCreateCommand": "pnpm install --frozen-lockfile",
-  
   "customizations": {
     "vscode": {
       "extensions": [
@@ -21,10 +19,14 @@
         "npm.packageManager": "pnpm",
         "typescript.tsdk": "/app/node_modules/typescript/lib",
         "eslint.workingDirectories": ["/app"],
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
       }
     }
   },
+
+  "mounts": [
+    "source=${env:HOME}/.bashrc,target=/home/node/.bashrc,type=bind,consistency=cached"
+  ],
 
   "runArgs": [
     "--memory=4g",
