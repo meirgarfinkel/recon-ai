@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-0: var(--color-0);
+  --color-1: var(--color-1);
+  --color-2: var(--color-2);
+  --color-3: var(--color-3);
+  --color-4: var(--color-4);
+  --color-5: var(--color-5);
+  --color-6: var(--color-6);
+  --color-7: var(--color-7);
+  --color-8: var(--color-8);
+  --color-9: var(--color-9);
+  --color-10: var(--color-10);
+  --color-11: var(--color-11);
+  --color-12: var(--color-12);
+  --color-13: var(--color-13);
+  --color-accent: var(--color-accent);
+  --color-accent-h: var(--color-accent-hover);
+  --color-bg: var(--color-bg);
+  --color-form-bg: var(--color-form-bg);
+}
+
+@layer base {
+  :root {
+    --color-0: #ffffff;
+    --color-1: #eeeeee;
+    --color-2: #bbbbbb;
+    --color-3: #aaaaaa;
+    --color-4: #999999;
+    --color-5: #888888;
+    --color-6: #777777;
+    --color-7: #666666;
+    --color-8: #555555;
+    --color-9: #444444;
+    --color-10: #333333;
+    --color-11: #222222;
+    --color-12: #111111;
+    --color-13: #000000;
+    --color-accent: #86efac;
+    --color-accent-hover: #adf4c5;
+    --color-bg: #eeeeee;
+    --color-form-bg: #ffffff
+  }
+  .dark {
+    --color-0: #000000;
+    --color-1: #111111;
+    --color-2: #222222;
+    --color-3: #333333;
+    --color-4: #444444;
+    --color-5: #555555;
+    --color-6: #666666;
+    --color-7: #777777;
+    --color-8: #888888;
+    --color-9: #999999;
+    --color-10: #aaaaaa;
+    --color-11: #bbbbbb;
+    --color-12: #eeeeee;
+    --color-13: #ffffff;
+    --color-bg: #222222;
+    --color-form-bg: #000000;
+  }
+  html {
+    /* hint browser about color scheme */
+    color-scheme: light dark;
+  }
+}
