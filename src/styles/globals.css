@@ -1,6 +1,78 @@
 @import "tailwindcss";
 
+/* Define your core CSS variables for light and dark modes */
+@layer base {
+  :root {
+    --c-bg-primary: #FAFAFB;
+    --c-bg-secondary: #F2F3F4;
+    --c-bg-input: #E9EBEC;
+    --c-bg-hover: #E3E5E6;
+    --c-bg-nav: #191B1F;
+
+    --c-text-primary: #26282B;
+    --c-text-secondary: #56585B;
+    --c-text-placeholder: #999B9E;
+    --c-text-nav: #E6E8EA;
+
+    --c-border: #C8CACB;
+    --c-focus-ring: #86efac;
+
+    --c-accent: #86efac;
+    --c-accent-hover: #cff8dc;
+    --c-accent-text: #166534;
+  }
+
+  .dark {
+    --c-bg-primary: #191B1F;
+    --c-bg-secondary: #26282C;
+    --c-bg-input: #333539;
+    --c-bg-hover: #404246;
+
+    --c-text-primary: #E6E8EA;
+    --c-text-secondary: #B3B5B8;
+    --c-text-placeholder: #808285;
+
+    --c-border: #4D4F53;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--c-text-placeholder);
+  }
+
+  .border {
+    --tw-border-opacity: 1;
+    border-color: var(--c-border);
+  }
+
+  html {
+    /* Hints the browser about the preferred color scheme for scrollbars, etc. */
+    color-scheme: light dark;
+  }
+}
+
+/* Inform Tailwind CSS about your theme variables to generate utilities */
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-bg-primary: var(--c-bg-primary);
+  --color-bg-secondary: var(--c-bg-secondary);
+  --color-bg-input: var(--c-bg-input);
+  --color-bg-hover: var(--c-bg-hover);
+  --color-bg-nav: var(--c-bg-nav);
+
+  --color-text-primary: var(--c-text-primary);
+  --color-text-secondary: var(--c-text-secondary);
+  --color-text-placeholder: var(--c-text-placeholder);
+  --color-text-nav: var(--c-text-nav);
+
+  --color-border: var(--c-border);
+  --color-focus-ring: var(--c-focus-ring);
+
+  --color-accent: var(--c-accent);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-accent-text: var(--c-accent-text);
+
+  --shadow: 2px 2px 7px 1px var(--c-text-secondary);
+
+  /* You can also define other theme properties here if needed,
+     e.g., --spacing-1: 0.25rem; */
 }

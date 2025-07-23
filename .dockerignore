@@ -1,8 +1,10 @@
 # Dependencies
 node_modules
+.pnpm-store
 .pnpm
 .pnpm-debug.log
 npm-debug.log
+.next
 
 # Build output
 dist
@@ -17,6 +19,7 @@ coverage
 # Docker files
 Dockerfile
 docker-compose.yml
+devcontainer.json
 
 # Editor/IDE
 .vscode

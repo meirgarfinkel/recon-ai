@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 300 50">
+  <!-- Text before the O -->
+  <text x="0" y="40" font-family="Poppins, sans-serif" font-size="50" fill="white">Rec</text>
+
+  <!-- Smaller drone-style target for the O -->
+  <g transform="translate(110,27) scale(0.7)">
+    <circle r="20" stroke="#7bf1a8" stroke-width="4" fill="none"/>
+    <circle r="8" stroke="#7bf1a8" stroke-width="2" fill="none"/>
+    <line x1="-25" x2="-15" stroke="#7bf1a8" stroke-width="2"/>
+    <line x1="15" x2="25" stroke="#7bf1a8" stroke-width="2"/>
+    <line y1="-25" y2="-15" stroke="#7bf1a8" stroke-width="2"/>
+    <line y1="15" y2="25" stroke="#7bf1a8" stroke-width="2"/>
+  </g>
+
+  <!-- Text after the O -->
+  <text x="131" y="40" font-family="Poppins, sans-serif" font-size="50" fill="white">n</text>
+
+  <!-- AI in accent color -->
+  <text x="162" y="40" font-family="Poppins, sans-serif" font-size="50" fill="#7bf1a8">AI</text>
+</svg>

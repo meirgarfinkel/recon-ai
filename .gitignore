@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .pnpm-store/
-.pnpm-debug.log
+.pnpm-debug.log*
 **/.pnpm-store/**/*
 
 # testing

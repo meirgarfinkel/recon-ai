@@ -1,42 +1,47 @@
 {
   "compilerOptions": {
-    /* Base Options: */
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-
-    /* Strictness */
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
     "checkJs": true,
-
-    /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "ES2022"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "plugins": [{ "name": "next" }],
     "incremental": true,
-
-    /* Path Aliases */
+    "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
-    }
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "next-env.d.ts",
+    "**/*.cjs",
+    "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.cjs",
-    "**/*.js",
+    ".eslintrc.cjs",
+    "next-env.d.ts",
     ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+, "postcss.config.cjs", "tailwind.config.ts"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

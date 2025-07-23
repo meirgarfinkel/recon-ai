@@ -1,23 +1,45 @@
 {
   "name": "ReconAI",
-  "dockerComposeFile": "../docker-compose.yml",
+  "dockerComposeFile": "../docker-compose.dev.yml",
   "service": "web",
   "workspaceFolder": "/app",
   "remoteUser": "node",
   "forwardPorts": [3000, 5432],
-  
+
+  // for windows
+  // "runArgs": ["-v", "/run/host-services/ssh-auth.sock:/tmp/ssh-agent.sock"]
+
+  "runArgs": [
+    "--memory=4g",
+    "--cpus=2",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt=seccomp:unconfined",
+    "-v",
+    "${env:SSH_AUTH_SOCK}:/ssh-agent",
+    "-e",
+    "SSH_AUTH_SOCK=/ssh-agent"
+  ],
+
+  "postCreateCommand": "pnpm install --reporter append-only && pnpm prisma generate && pnpm prisma migrate deploy",
+
   "customizations": {
     "vscode": {
       "extensions": [
         "prisma.prisma",
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "imgildev.vscode-nextjs-generator"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.env.linux": {
+          "PNPM_HOME": "/pnpm-global",
+          "PATH": "/pnpm-global:${env:PATH}"
+        },
         "npm.packageManager": "pnpm",
-        "typescript.tsdk": "/app/node_modules/typescript/lib",
+        "typescript.tsdk": "node_modules/typescript/lib",
         "eslint.workingDirectories": ["/app"],
         "editor.defaultFormatter": "esbenp.prettier-vscode"
       }
@@ -28,10 +50,9 @@
     "source=${env:HOME}/.bashrc,target=/home/node/.bashrc,type=bind,consistency=cached"
   ],
 
-  "runArgs": [
-    "--memory=4g",
-    "--cpus=2",
-    "-v", "${env:SSH_AUTH_SOCK}:/ssh-agent",
-    "-e", "SSH_AUTH_SOCK=/ssh-agent"
-  ]
+  "remoteEnv": {
+    "CI": "true",
+    "PNPM_DISABLE_PRE_POST_SCRIPTS": "1",
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
+  }
 }
